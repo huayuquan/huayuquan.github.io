@@ -132,3 +132,6 @@ ul.navigation a:focus {
 .hide {
     display: none;
 }
+.img{
+	text-align:center;
+}
