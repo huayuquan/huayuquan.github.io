@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>Welcome to my world</title>
+<link href="../templatemo_style.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="../css/coda-slider.css" type="text/css" media="screen" charset="utf-8" />
+
+<script src="../js/jquery-1.2.6.js" type="text/javascript"></script>
+<script src="../js/jquery.scrollTo-1.3.3.js" type="text/javascript"></script>
+<script src="../js/jquery.localscroll-1.2.5.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery.serialScroll-1.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/coda-slider.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+	
+    <div id="slider">
+    <div id="templatemo_wrapper">
+    	
+        <div id="header">
+            <h1><a href="">You are here<span>Look around</span></a></h1>
+        </div>
+        
+        
+        
+        <div id="content">
+        
+            <div class="scroll">
+                 <div class="scrollContainer">
+                
+                    <div class="panel" id="gallery">
+                        <h1>XFF & Referer</h1>
+                        
+                        <div id="gallery_container">
+                            
+<p style="text-indent:25px;"> XFF（X-Forwarded-For），从单词表面也能理解个大概，XFF和转发有关。</p>
+<p style="text-indent:25px;"> 很多情况下，我们需要用到代理服务器。何为代理服务器？发送的请求不能直接到达目标服务器，需要通过一个或多个中间代理，先将请求发送给代理，再让代理发送给目标服务器。中间的这个中介，就是代理服务器。</p>
+<p style="text-indent:25px;"> 这之中出现了一个问题，如果有人通过代理服务器向其他主机发动攻击，然而被侵入的主机收到的请求都是从代理服务器发来的，怎么找到“墓后主使”呢？</p>
+<p style="text-indent:25px;"> XFF就是起这个作用的，能够记下客户端最原始的IP地址。XFF的在http header中的格式是X-Forwarded-For: client, proxy1, proxy2......</p>
+<p style="text-indent:25px;"> 请求发送到第一个代理服务器时（记proxy1），proxy1把发送请求的client ip地址写入XFF字段，然后将它转发到下一个代理服务器proxy2，proxy2将proxy1的ip添加进XFF字段，以此类推，直到交付给目标服务器。每个服务器记录的都是这个请求前一步的来源。</p>
+<p style="text-indent:25px;"> 问题又来了，client在发送请求之前就截获数据包并添加了XFF字段，无论后面的服务器怎样添加ip，它的源头ip还是被伪装了。How can that！</p>
+<p style="text-indent:25px;"> 解决办法就是在网关处做处理，每个发送出去的请求，都要将XFF字段清空，以确保不被伪装。（这里的网关是狭义的，指请求走出局域网真正进入到互联网网络之前的网关。）</p>
+<p style="text-indent:25px;"> 最后的问题，我怎样相信中间的代理？怎样确保它不会从中搞鬼？</p>
+<p style="text-indent:25px;"> 额......我...就是...相信他！</p>
+<p style="text-indent:25px;"> 结束啦？嗯，结束了。这基于目标服务器对代理服务器的信任，例如目标服务器信任代理1和代理2，但却接收到了一个来自代理3的请求。目标服务器就可以认为请求有被修改的可能。(所以服务器应该有一个自己的信任白名单，记录着“弟兄”们的名字，决不背叛。)</p>
+<p style="text-indent:25px;"> 这就和证书一样，你怎么证明你的身份呢？通过证书，你怎么证明证书就是那个证书呢？通过证书的证书......。一直递归到最底层的证书，无法被证明了，默认相信。</p>
+<p style="text-indent:25px;"> 让我想起了课堂上老师说的关于数据测量的一个方法，“这个方法其实并不准确，但是还有比他更准确的了吗？没有，所以他是准确的。”</p>
+<p style="text-indent:25px;"> 随便怎么理解吧！haaa</p>
+<p style="text-indent:25px;"> </p>
+<p style="text-indent:25px;"> 第二块内容，referer，引用；来源；推荐。英语好的朋友可能发现了，这个单词好像拼写不对。正确地拼写应该是referrer，但是因为早期规范的拼写是错误的，为了向后兼容，将错就错了。</p>
+<p style="text-indent:25px;"> 好可爱的错误。</p>
+<p style="text-indent:25px;"> 这个字段又是干哈的呢。它会告诉服务器网页是从哪个页面链接过来的。</p>
+<p style="text-indent:25px;"> 举个例子，你从three six zero主页点击了four three nine nine，并进入了页面内。那这个请求的referer字段就会写成three six zero的地址。换句话说，通过此字段，four three nine nine能够知道今天有多少用户从three six zero网页访问了我的主页，算是一种流量的检测吧。</p>
+<p style="text-indent:25px;"> 无论是上面的XFF还是这里的Referer，都是很容易修改的。</p>
+<p style="text-indent:25px;"> 以下是《攻防世界》的一道例题，访问链接后，页面显示"请求来源必须是123.123.123.123"</p>
+<p style="text-indent:25px;"> 当抓包并添加XFF字段后，返回了新的信息，链接需从google主页发起。</p>
+<p style="text-indent:25px;"> 上面说的两个点全用到了。最后抓的包被修改成了这样：</p>
+<div class="img"><img src="../images/page/13.png" /></div>
+<p style="text-indent:25px;"> 返回的页面里得到了flag。</p>
+
+                            <div class="cleaner"></div>
+                        </div>
+                
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- end of scroll -->
+        
+        </div> <!-- end of content -->
+        
+        <div id="footer">
+        	
+            Copyright ? 2048 Something should be left here, otherwise it will not look good.
+        </div>
+    
+    </div> <!-- end of wrapper -->
+    </div> <!-- end of slider -->
+
+</body>
+</html>
